@@ -1,7 +1,7 @@
 package PresentationLayer;
 
 import FunctionLayer.LogicFacade;
-import FunctionLayer.LegoHusException;
+import FunctionLayer.LegoHouseException;
 import FunctionLayer.User;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 public class Register extends Command {
 
     @Override
-    String execute( HttpServletRequest request, HttpServletResponse response ) throws LegoHusException {
+    String execute( HttpServletRequest request, HttpServletResponse response ) throws LegoHouseException {
         String email = request.getParameter( "email" );
         String password1 = request.getParameter( "password1" );
         String password2 = request.getParameter( "password2" );
@@ -26,7 +26,7 @@ public class Register extends Command {
             session.setAttribute( "role", user.getRole() );
             return user.getRole() + "page";
         } else {
-            throw new LegoHusException( "the two passwords did not match" );
+            throw new LegoHouseException( "the two passwords did not match" );
         }
     }
 

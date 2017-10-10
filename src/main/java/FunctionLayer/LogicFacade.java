@@ -8,11 +8,11 @@ import DBAccess.UserMapper;
  */
 public class LogicFacade {
 
-    public static User login( String email, String password ) throws LegoHusException {
+    public static User login( String email, String password ) throws LegoHouseException {
         return UserMapper.login( email, password );
     } 
 
-    public static User createUser( String email, String password ) throws LegoHusException {
+    public static User createUser( String email, String password ) throws LegoHouseException {
         User user = new User(email, password, "customer");
         UserMapper.createUser( user );
         return user;

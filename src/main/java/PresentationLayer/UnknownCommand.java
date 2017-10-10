@@ -1,6 +1,6 @@
 package PresentationLayer;
 
-import FunctionLayer.LegoHusException;
+import FunctionLayer.LegoHouseException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 public class UnknownCommand extends Command {
 
     @Override
-    String execute( HttpServletRequest request, HttpServletResponse response ) throws LegoHusException {
+    String execute( HttpServletRequest request, HttpServletResponse response ) throws LegoHouseException {
         String msg = "Unknown command. Contact IT";
-        throw new LegoHusException( msg );
+        throw new LegoHouseException( msg );
     }
 
 }
