@@ -74,9 +74,22 @@ public class OrderMapper {
             userPstmt.setInt(12, wBrick1);
             userPstmt.executeUpdate();
             }
+            
         } catch (SQLException | ClassNotFoundException ex) {
             throw new LegoHouseException(ex.getMessage());
         }
+    }
+    
+    public static void closeOrder(User user) throws LegoHouseException {
+        try {
+            String SQL = "UPDATE orders SET currentStatus = 'Ordered' WHERE userid = ?;";
+            PreparedStatement userPstmt = Connector.connection().prepareStatement(SQL);
+            userPstmt.setInt(1, user.getId());
+            userPstmt.executeUpdate();
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new LegoHouseException(ex.getMessage());
+        }
+        
     }
     
     public static List<LineItem> getLineItems(int id) throws LegoHouseException {

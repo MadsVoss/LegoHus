@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class LegoHouseFactory {
     
-    public static void buildLegoHouse(int length, int width, int height, User user) throws LegoHouseException{
+    public static List<LineItem> buildLegoHouse(int length, int width, int height, User user) throws LegoHouseException{
         //
         int lbrick4 = length / 4;
         int lbrick2 = (length % 4) / 2;
@@ -28,8 +28,10 @@ public class LegoHouseFactory {
         OrderMapper.createOrder(user);
         int orderId = OrderMapper.getOrder(user);
         OrderMapper.createLineItem(orderId, lbrick4, lbrick2, lbrick1, wbrick4, wbrick2, wbrick1, height);
-        
-        
+        OrderMapper.closeOrder(user);
+        List<LineItem> list = OrderMapper.getLineItems(orderId);
+        return list;
+       
     }
     
 //    public static void main(String[] args) throws LegoHouseException {
