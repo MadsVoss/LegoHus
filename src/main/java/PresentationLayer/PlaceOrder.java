@@ -24,7 +24,6 @@ public class PlaceOrder extends Command {
         User user = (User)session.getAttribute("user");
         OrderMapper.createOrder(user);
         int orderId = OrderMapper.getOrder(user);
-        OrderMapper.createLineItem(orderId);
         
         
         
