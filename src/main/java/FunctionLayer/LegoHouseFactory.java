@@ -27,17 +27,16 @@ public class LegoHouseFactory {
         
         OrderMapper.createOrder(user);
         int orderId = OrderMapper.getOrder(user);
-        OrderMapper.createLineItem(user.getId(), lbrick4, lbrick2, lbrick1, wbrick4, wbrick2, wbrick1, height);
+        OrderMapper.createLineItem(orderId, lbrick4, lbrick2, lbrick1, wbrick4, wbrick2, wbrick1, height);
         
         
     }
     
-    public static void main(String[] args) throws LegoHouseException {
-        User user = UserMapper.login("batman@gmail.com", "Wayne");
-        List<LineItem> list = OrderMapper.getLineItems(user.getId());
-        for(int i = 0; i < list.size(); i++) {
-        System.out.println(list.get(i).toString());
-    }
-//        LegoHouseFactory.buildLegoHouse(13, 12, 3, user);
-    }
+//    public static void main(String[] args) throws LegoHouseException {
+//        User user = UserMapper.login("batman@gmail.com", "Wayne");
+//        List<LineItem> list = OrderMapper.getLineItems(user.getId());
+//        for(int i = 0; i < list.size(); i++) {
+//        System.out.println(list.get(i).toString());
+//    }
+//    }
 }

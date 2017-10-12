@@ -7,6 +7,7 @@ package PresentationLayer;
 
 import DBAccess.OrderMapper;
 import FunctionLayer.LegoHouseException;
+import FunctionLayer.LegoHouseFactory;
 import FunctionLayer.User;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,13 +23,14 @@ public class PlaceOrder extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws LegoHouseException {
         HttpSession session = request.getSession();
         User user = (User)session.getAttribute("user");
-        OrderMapper.createOrder(user);
-        int orderId = OrderMapper.getOrder(user);
+        int h = Integer.parseInt(request.getParameter("height"));
+        int l = Integer.parseInt(request.getParameter("length"));
+        int w = Integer.parseInt(request.getParameter("width"));
+        LegoHouseFactory.buildLegoHouse(13, 12, 6, user);
         
         
         
-        
-        return null;
+        return user.getRole();
     }
     
 }
